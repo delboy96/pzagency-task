@@ -11,13 +11,35 @@ require_once '../app/Controllers/PostController.php';
 
 use Controllers\PostController;
 
-$controller = new PostController($pdo); // Ensure $pdo is defined correctly
+$uri = $_SERVER['REQUEST_URI'];
 
-$controller->index();
+// Remove query string and trim leading/trailing slashes
+$uri = strtok($uri, '?');
+$uri = trim($uri, '/');
 
-//$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-//
-//if ($uri === '') {
+// Remove base path from URI
+$basePath = 'pzagencytask/public';
+if (strpos($uri, $basePath) === 0) {
+    $uri = substr($uri, strlen($basePath));
+    $uri = trim($uri, '/');
+}
+
+// Explode URI parts by slash
+$uriParts = explode('/', $uri);
+
+if ($uri === '' || $uri === 'index') {
+    $controller = new PostController($pdo);
+    $controller->index();
+} elseif ($uriParts[0] === 'single' && isset($uriParts[1])) {
+    $blogId = $uriParts[1];
+    $controller = new PostController($pdo);
+    $controller->show($blogId);
+} else {
+    http_response_code(404);
+    echo "404 Not Found";
+}
+
+//if ($uri === '/index') {
 //    $controller = new PostController($pdo);
 //    $controller->index();
 //}

@@ -1,3 +1,6 @@
+<?php
+$uri = $_SERVER['REQUEST_URI'];
+?>
 <!doctype html>
 <html>
 <head>
@@ -20,7 +23,7 @@
                     <span class="text-indigo-600 font-medium mb-3 block"><?=$blog['created_at']?></span>
                     <h4 class="text-lg text-gray-900 font-medium leading-8 mb-5"><?=$blog['title']?></h4>
                     <p class="text-gray-500 leading-6 mb-6"><?=$blog['body']?></p>
-                    <a href="javascript:;" class="cursor-pointer text-lg text-indigo-600 font-semibold">Read more..</a>
+                    <a href="<?= $uri.'single/'.$blog['id']?>" class="cursor-pointer text-lg text-indigo-600 font-semibold">Read more..</a>
                 </div>
             </div>
             <?php endforeach; ?>
