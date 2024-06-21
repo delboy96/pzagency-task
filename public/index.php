@@ -5,11 +5,13 @@ ini_set('display_errors', 1);
 
 //require_once '../vendor/autoload.php';
 require_once '../config/conn.php';
-//require_once '../app/Controllers/UserController.php';
+require_once '../app/Controllers/UserController.php';
 require_once '../app/Controllers/PostController.php';
-//require_once '../app/Controllers/CommentController.php';
+require_once '../app/Controllers/CommentController.php';
+require_once '../app/Controllers/AuthController.php';
 
 use Controllers\PostController;
+use Controllers\AuthController;
 
 $uri = $_SERVER['REQUEST_URI'];
 
@@ -34,7 +36,14 @@ if ($uri === '' || $uri === 'index') {
     $blogId = $uriParts[1];
     $controller = new PostController($pdo);
     $controller->show($blogId);
-} else {
+} elseif ($uriParts[0] === 'login') {
+    $controller = new AuthController($pdo);
+    $controller->login_page();
+} elseif ($uriParts[0] === 'register') {
+    $controller = new AuthController($pdo);
+    $controller->register_page();
+}
+else {
     http_response_code(404);
     echo "404 Not Found";
 }
