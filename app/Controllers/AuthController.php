@@ -36,7 +36,7 @@ class AuthController
 
         try {
             $this->userModel->create($name, $email, $password);
-            $data['success'] = 'User registered successfully!';
+            $data['success'] = 'Registered successfully!';
         } catch (\Exception $e) {
             $data['error'] = $e->getMessage();
         }
@@ -52,7 +52,7 @@ class AuthController
         try {
             if($user && password_verify($password, $user['password'])) {
                 session_start();
-                $_SERVER['user'] = $user['id'];
+                $_SESSION['user'] = $user['id'];
                 $data['success'] = 'Login successfull!';
             } else {
                 $data['error'] = 'Login error.';
@@ -65,7 +65,7 @@ class AuthController
 
     public function logout()
     {
-//        session_start();
+        session_start();
         session_destroy();
     }
 

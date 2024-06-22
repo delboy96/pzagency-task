@@ -1,5 +1,8 @@
 <?php
 require '../config/config.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!doctype html>
 <html>
@@ -27,7 +30,10 @@ require '../config/config.php';
             </div>
         </div>
     </div>
-    <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
+    <div class="flex flex-col w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
+        <?php if(!empty($_SESSION['message'])) : ?>
+        <span class="success-msg"><?= $_SESSION['message'] ?></span>
+        <?php endif; ?>
         <div class="w-full px-8 md:px-32 lg:px-24">
             <form action="../public/php/login.php" method="post" class="bg-white rounded-md shadow-2xl p-5">
                 <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>

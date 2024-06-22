@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.success-msg {
+    @apply mx-auto flex w-max bg-green-100 border border-green-600 rounded-2xl px-5 py-3
+}

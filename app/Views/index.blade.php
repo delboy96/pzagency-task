@@ -13,12 +13,18 @@ $uri = $_SERVER['REQUEST_URI'];
 <body>
 <nav class="w-full flex h-20 px-6 py-2 border-b border-gray-300 justify-end shadow-lg">
     <div class="flex space-x-4 items-center">
+        <?php if(isset($_SESSION['user'])) :?>
+        <span><a href="<?= BASE_URL ?>php/logout.php">Logout</a> </span>
+        <?php else: ?>
         <span><a href="<?= BASE_URL ?>login">Login</a> </span>
         <span><a href="<?= BASE_URL ?>register">Register</a> </span>
-        <span><a href="<?= BASE_URL ?>logout">Logout</a> </span>
+        <?php endif; ?>
     </div>
 </nav>
-<section class="py-24 ">
+<?php if(!empty($_SESSION['message'])) : ?>
+<span class="success-msg mt-10"><?= $_SESSION['message'] ?></span>
+<?php endif; ?>
+<section class="py-12 ">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <h2 class="font-manrope text-4xl font-bold text-gray-900 text-center mb-16">Our latest blog</h2>
         <div class="grid justify-center gap-8 md:grid-cols-3 lg:justify-between lg:gap-8">

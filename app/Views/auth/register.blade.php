@@ -1,5 +1,8 @@
 <?php
 require '../config/config.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
         <!doctype html>
 <html>
