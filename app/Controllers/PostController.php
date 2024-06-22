@@ -26,7 +26,7 @@ class PostController
     {
         $blog = $this->postModel->find($id);
         $comments = $this->commentModel->getBlogComments($id);
-        require '../app/Views/single.blade.php';
+        require '../app/Views/post/single.blade.php';
     }
 
     public function create($user_id, $title, $body)

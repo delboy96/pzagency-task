@@ -17,6 +17,7 @@ $uri = $_SERVER['REQUEST_URI'];
     </div>
     <div class="flex space-x-4 items-center">
         <?php if(isset($_SESSION['user'])) :?>
+        <span class="text-gray-400 italic">Hi, <?= $_SESSION['user']?></span>
         <span><a href="<?= BASE_URL ?>php/logout.php">Logout</a> </span>
         <?php else: ?>
         <span><a href="<?= BASE_URL ?>login">Login</a> </span>

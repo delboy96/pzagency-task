@@ -2,14 +2,14 @@
 
 require '../../config/conn.php';
 require '../../config/config.php';
-require_once '../../app/Controllers/PostController.php';
+require_once '../../app/Controllers/CommentController.php';
 
-use Controllers\PostController;
+use Controllers\CommentController;
 
-$postController = new PostController($pdo);
+$commentController = new CommentController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['_method']) && $_POST['_method'] == 'PATCH') {
-    $data = $postController->update($_POST['post_id'], $_POST['title'], $_POST['body']);
+    $data = $commentController->update($_POST['comment_id'], $_POST['comment']);
     echo isset($data['success']) ? $data['success'] : $data['error'];
     session_start();
     $_SESSION['message'] = $data['success'];

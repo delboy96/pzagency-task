@@ -14,6 +14,7 @@ require_once '../app/Controllers/PostController.php';
 require_once '../app/Controllers/CommentController.php';
 require_once '../app/Controllers/AuthController.php';
 
+use Controllers\CommentController;
 use Controllers\PostController;
 use Controllers\AuthController;
 
@@ -50,6 +51,10 @@ if ($uri === '' || $uri === 'index') {
     $blogId = $uriParts[1];
     $controller = new PostController($pdo);
     $controller->updateForm($blogId);
+} elseif ($uriParts[0] === 'comment-update' && isset($uriParts[1])) {
+    $commentId = $uriParts[1];
+    $controller = new CommentController($pdo);
+    $controller->updateForm($commentId);
 } else {
     http_response_code(404);
     echo "404 Not Found";

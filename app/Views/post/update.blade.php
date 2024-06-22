@@ -11,9 +11,13 @@ $uri = $_SERVER['REQUEST_URI'];
     <title>PZAgency - task</title>
 </head>
 <body>
-<nav class="w-full flex h-20 px-6 py-2 border-b border-gray-300 justify-end shadow-lg">
+<nav class="w-full flex h-20 px-6 py-2 border-b border-gray-300 justify-between shadow-lg">
+    <div class="flex items-center">
+        <span><a href="<?= BASE_URL ?>">Home</a></span>
+    </div>
     <div class="flex space-x-4 items-center">
         <?php if(isset($_SESSION['user'])) :?>
+        <span class="text-gray-400 italic">Hi, <?= $_SESSION['user']?></span>
         <span><a href="<?= BASE_URL ?>php/logout.php">Logout</a> </span>
         <?php else: ?>
         <span><a href="<?= BASE_URL ?>login">Login</a> </span>

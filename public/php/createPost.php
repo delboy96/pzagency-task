@@ -15,5 +15,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['message'] = $data['success'];
     header('Location:'.BASE_URL.'single/'.$data['postId']);
 } else {
-    require 'app/Views/auth/register.blade.php';
+    require 'public/index.php';
 }
