@@ -28,4 +28,57 @@ class PostController
         $comments = $this->commentModel->getBlogComments($id);
         require '../app/Views/single.blade.php';
     }
+
+    public function create($user_id, $title, $body)
+    {
+        $data = [];
+
+        try {
+            $postId = $this->postModel->create($user_id, $title, $body);
+            $data['postId'] = $postId;
+            $data['success'] = 'Post created successfully!';
+        } catch (\Exception $e) {
+            $data['error'] = $e->getMessage();
+        }
+
+        return $data;
+    }
+
+    public function updateForm($id)
+    {
+        $blog = $this->postModel->find($id);
+        require '../app/Views/post/update.blade.php';
+    }
+
+    public function update($id, $title, $body)
+    {
+        $data = [];
+
+        try {
+            $updated = $this->postModel->update($id, $title, $body);
+            if($updated > 0) {
+                $data['success'] = 'Post updated successfully!';
+            }
+        } catch (\Exception $e) {
+            $data['error'] = $e->getMessage();
+        }
+
+        return $data;
+    }
+
+    public function delete($id)
+    {
+        $data = [];
+
+        try {
+            $deleted = $this->postModel->delete($id);
+            if($deleted > 0) {
+                $data['success'] = 'Post deleted successfully!';
+            }
+        } catch (\Exception $e) {
+            $data['error'] = $e->getMessage();
+        }
+
+        return $data;
+    }
 }

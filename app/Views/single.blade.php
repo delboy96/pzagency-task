@@ -1,3 +1,6 @@
+<?php
+require '../config/config.php';
+?>
 <!doctype html>
 <html>
 <head>
@@ -7,7 +10,23 @@
     <title>PZAgency - task</title>
 </head>
 <body>
+<nav class="w-full flex h-20 px-6 py-2 border-b border-gray-300 justify-between shadow-lg">
+    <div class="flex items-center">
+        <span><a href="<?= BASE_URL ?>">Home</a></span>
+    </div>
+    <div class="flex space-x-4 items-center">
+        <?php if(isset($_SESSION['user'])) :?>
+        <span><a href="<?= BASE_URL ?>php/logout.php">Logout</a> </span>
+        <?php else: ?>
+        <span><a href="<?= BASE_URL ?>login">Login</a> </span>
+        <span><a href="<?= BASE_URL ?>register">Register</a> </span>
+        <?php endif; ?>
+    </div>
+</nav>
 <section class="py-24 ">
+    <?php if(!empty($_SESSION['message'])) : ?>
+    <span class="success-msg mt-10"><?= $_SESSION['message'] ?></span>
+    <?php endif; ?>
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <article class="max-w-2xl px-6 py-24 mx-auto space-y-12 dark:bg-gray-800 dark:text-gray-50">
             <div class="w-full mx-auto space-y-4 text-center">
@@ -32,6 +51,9 @@
                     </div>
                 </div>
                 <?php endforeach; ?>
+                <?php if(empty($comments)) :?>
+                <span>No comments yet.</span>
+                <?php endif; ?>
             </div>
         </article>
     </div>

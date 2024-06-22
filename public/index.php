@@ -46,13 +46,11 @@ if ($uri === '' || $uri === 'index') {
 } elseif ($uriParts[0] === 'register') {
     $controller = new AuthController($pdo);
     $controller->register_page();
-}
-else {
+} elseif ($uriParts[0] === 'update' && isset($uriParts[1])) {
+    $blogId = $uriParts[1];
+    $controller = new PostController($pdo);
+    $controller->updateForm($blogId);
+} else {
     http_response_code(404);
     echo "404 Not Found";
 }
-
-//if ($uri === '/index') {
-//    $controller = new PostController($pdo);
-//    $controller->index();
-//}

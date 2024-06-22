@@ -38,7 +38,9 @@ class User
     public function delete($id)
     {
         $stmt = $this->pdo->prepare('DELETE FROM users WHERE id = ?');
-        return $stmt->execute([$id]);
+        $stmt->execute([$id]);
+
+        return $stmt->rowCount();
     }
 
     public function findByEmail($email)

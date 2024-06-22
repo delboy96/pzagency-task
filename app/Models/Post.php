@@ -22,4 +22,32 @@ class Post
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
+
+    public function create($user_id, $title, $body)
+    {
+        $stmt = $this->pdo->prepare('INSERT INTO posts (user_id, title, body) VALUES (?, ?, ?)');
+        $created = $stmt->execute([$user_id, $title, $body]);
+
+        if($created) {
+            return $this->pdo->lastInsertId();
+        } else {
+            return false;
+        }
+    }
+
+    public function update($id, $title, $body)
+    {
+        $stmt = $this->pdo->prepare('UPDATE posts SET title = ?, body = ? WHERE id = ?');
+        $stmt->execute([$title, $body, $id]);
+
+        return $stmt->rowCount();
+    }
+
+    public function delete($id)
+    {
+        $stmt = $this->pdo->prepare('DELETE FROM posts WHERE id = ?');
+        $stmt->execute([$id]);
+
+        return $stmt->rowCount();
+    }
 }
