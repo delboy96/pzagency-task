@@ -10,4 +10,4 @@ $uri = $_SERVER['REQUEST_URI'];
     <link href="<?=ASSETS_URL?>css/output.css" rel="stylesheet">
     <title>PZAgency - task</title>
 </head>
-<body class="bg-gray-100 min-h-[100vh]">
+<body class="bg-gray-100 min-h-[100vh] flex flex-col">
