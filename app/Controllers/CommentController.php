@@ -16,6 +16,11 @@ class CommentController
     {
         $data = [];
 
+        if (strlen($comment) < 4 ) {
+            $data['error'] = 'Body must have at least 4';
+            return $data;
+        }
+
         try {
             $postId = $this->commentModel->create($post_id, $user_id, $comment);
             $data['commentId'] = $postId;
@@ -36,6 +41,11 @@ class CommentController
     public function update($id, $comment)
     {
         $data = [];
+
+        if (strlen($comment) < 4 ) {
+            $data['error'] = 'Body must have at least 4';
+            return $data;
+        }
 
         try {
             $updated = $this->commentModel->update($id, $comment);

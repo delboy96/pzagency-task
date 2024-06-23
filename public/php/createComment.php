@@ -10,10 +10,14 @@ $commentController = new CommentController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = $commentController->create($_POST['post_id'], $_POST['user_id'], $_POST['comment']);
-    echo isset($data['success']) ? $data['success'] : $data['error'];
     session_start();
-    $_SESSION['message'] = $data['success'];
-    header('Location:'.BASE_URL.'single/'.$_POST['post_id']);
+    if(!empty($data['success'])){
+        $_SESSION['success'] = $data['success'];
+        header('Location:'.BASE_URL.'single/'.$_POST['post_id']);
+    } else {
+        $_SESSION['error'] = $data['error'];
+        header('Location:'.BASE_URL.'single/'.$_POST['post_id']);
+    }
 } else {
     require 'public/index.php';
 }

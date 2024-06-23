@@ -28,6 +28,19 @@ class AuthController
     {
         $data = [];
 
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $data['error'] = 'Please enter a valid email address.';
+            return $data;
+        }
+        if (strlen($name) < 3 || strlen($name) > 30) {
+            $data['error'] = 'Name must have between 3 and 30 characters.';
+            return $data;
+        }
+        if (strlen($password) < 6 || strlen($password) > 30) {
+            $data['error'] = 'Password must have between 3 and 30 characters.';
+            return $data;
+        }
+
         if($this->userModel->findByEmail($email))
         {
             $data['error'] = 'User with that email already exists.';
@@ -46,6 +59,15 @@ class AuthController
     public function login($email, $password)
     {
         $data = [];
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $data['error'] = 'Please enter a valid email address.';
+            return $data;
+        }
+        if (strlen($password) < 6 || strlen($password) > 30) {
+            $data['error'] = 'Password must have between 3 and 30 characters.';
+            return $data;
+        }
 
         $user = $this->userModel->findByEmail($email);
 

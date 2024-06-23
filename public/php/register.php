@@ -10,10 +10,14 @@ $authController = new AuthController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = $authController->register($_POST['email'], $_POST['name'], $_POST['password']);
-    echo isset($data['success']) ? $data['success'] : $data['error'];
     session_start();
-    $_SESSION['message'] = $data['success'];
-    header('Location:'.BASE_URL.'login');
+    if(!empty($data['success'])){
+        $_SESSION['success'] = $data['success'];
+        header('Location:'.BASE_URL.'login');
+    } else {
+        $_SESSION['error'] = $data['error'];
+        header('Location:'.BASE_URL.'register');
+    }
 } else {
     require 'app/Views/auth/register.blade.php';
 }

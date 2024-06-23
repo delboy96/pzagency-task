@@ -33,6 +33,15 @@ class PostController
     {
         $data = [];
 
+        if (strlen($title) < 3 || strlen($title) > 40) {
+            $data['error'] = 'Title must have between 3 and 30 characters.';
+            return $data;
+        }
+        if (strlen($body) < 4 ) {
+            $data['error'] = 'Body must have at least 4';
+            return $data;
+        }
+
         try {
             $postId = $this->postModel->create($user_id, $title, $body);
             $data['postId'] = $postId;
@@ -53,6 +62,15 @@ class PostController
     public function update($id, $title, $body)
     {
         $data = [];
+
+        if (strlen($title) < 3 || strlen($title) > 40) {
+            $data['error'] = 'Title must have between 3 and 30 characters.';
+            return $data;
+        }
+        if (strlen($body) < 4 ) {
+            $data['error'] = 'Body must have at least 4';
+            return $data;
+        }
 
         try {
             $updated = $this->postModel->update($id, $title, $body);

@@ -25,7 +25,7 @@
                            placeholder="Email Address" required/>
                 </div>
                 <div class="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl ">
-                    <input class="pl-2 w-full outline-none border-none" type="password" name="password" id="password" placeholder="Password" maxlength="30" required/>
+                    <input class="pl-2 w-full outline-none border-none" type="password" name="password" id="password" placeholder="Password" minlength="6" maxlength="30" required/>
                 </div>
                 <button type="submit" class="block w-full bg-indigo-600 mt-5 py-2 rounded-2xl hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2">
                     Register

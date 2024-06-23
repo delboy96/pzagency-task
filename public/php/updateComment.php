@@ -10,9 +10,12 @@ $commentController = new CommentController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['_method']) && $_POST['_method'] == 'PATCH') {
     $data = $commentController->update($_POST['comment_id'], $_POST['comment']);
-    echo isset($data['success']) ? $data['success'] : $data['error'];
     session_start();
-    $_SESSION['message'] = $data['success'];
+    if(!empty($data['success'])){
+        $_SESSION['success'] = $data['success'];
+    } else {
+        $_SESSION['error'] = $data['error'];
+    }
     header('Location:'.BASE_URL.'single/'.$_POST['post_id']);
 } else {
     require 'public/index.php';

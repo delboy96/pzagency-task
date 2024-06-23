@@ -10,10 +10,14 @@ $postController = new PostController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = $postController->create($_POST['user_id'], $_POST['title'], $_POST['body']);
-    echo isset($data['success']) ? $data['success'] : $data['error'];
     session_start();
-    $_SESSION['message'] = $data['success'];
-    header('Location:'.BASE_URL.'single/'.$data['postId']);
+    if(!empty($data['success'])){
+        $_SESSION['success'] = $data['success'];
+        header('Location:'.BASE_URL.'single/'.$data['postId']);
+    } else {
+        $_SESSION['error'] = $data['error'];
+        header('Location:'.BASE_URL);
+    }
 } else {
     require 'public/index.php';
 }
