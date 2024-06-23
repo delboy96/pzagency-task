@@ -1,24 +1,5 @@
-<?php
-require '../config/config.php';
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-?>
-        <!doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../assets/css/output.css" rel="stylesheet">
-    <title>PZAgency - task</title>
-    <style>
-        .login_img_section {
-            background: linear-gradient(rgba(2, 2, 2, .7), rgba(0, 0, 0, .7)), url(https://images.unsplash.com/photo-1650825556125-060e52d40bd0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center;
-            background-size: cover;
-        }
-    </style>
-</head>
-<body>
+<?php require_once '../app/Views/components/header.blade.php'?>
+
 <div class="h-screen flex">
     <div class="hidden lg:flex w-full lg:w-1/2 login_img_section justify-around items-center">
         <div class="bg-black opacity-20 inset-0 z-0">
