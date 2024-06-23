@@ -663,10 +663,6 @@ video {
   inset: 0px;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
 .end-1 {
   inset-inline-end: 0.25rem;
 }
@@ -816,6 +812,10 @@ video {
   margin-top: 1.5rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -948,6 +948,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.min-h-\[100vh\] {
+  min-height: 100vh;
 }
 
 .w-11\/12 {

@@ -1,9 +1,8 @@
 <?php require_once '../app/Views/components/header.blade.php'?>
 <?php require_once '../app/Views/components/nav.blade.php'?>
 
-<?php if(!empty($_SESSION['message'])) : ?>
-<span class="success-msg mt-10"><?= $_SESSION['message'] ?></span>
-<?php endif; ?>
+<?php require_once '../app/Views/components/session-messsage.blade.php'?>
+
 <?php if(isset($_SESSION['user'])) :?>
 <section id="createPostForm" class="py-4 md:py-10">
     <div class="heading text-center font-bold text-xl m-5 text-gray-800">Update Blog Post</div>

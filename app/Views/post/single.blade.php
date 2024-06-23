@@ -2,9 +2,8 @@
 <?php require_once '../app/Views/components/nav.blade.php'?>
 
 <section>
-    <?php if(!empty($_SESSION['message'])) : ?>
-    <span class="success-msg mt-10"><?= $_SESSION['message'] ?></span>
-    <?php endif; ?>
+    <?php require_once '../app/Views/components/session-messsage.blade.php'?>
+
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <article class="max-w-2xl px-6 py-12 md:py-24 mx-auto space-y-12 dark:bg-gray-800 dark:text-gray-50">
             <div class="w-full mx-auto space-y-4 text-center">

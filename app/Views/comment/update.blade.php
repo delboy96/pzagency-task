@@ -1,9 +1,8 @@
 <?php require_once '../app/Views/components/header.blade.php'?>
 <?php require_once '../app/Views/components/nav.blade.php'?>
 
-<?php if(!empty($_SESSION['message'])) : ?>
-<span class="success-msg mt-10"><?= $_SESSION['message'] ?></span>
-<?php endif; ?>
+<?php require_once '../app/Views/components/session-messsage.blade.php'?>
+
 <?php if(isset($_SESSION['user'])) :?>
 <div class="editor mx-auto mt-10 w-full flex text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg ">
     <form action="../../public/php/updateComment.php" method="post" class="flex flex-col w-full">
