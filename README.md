@@ -10,7 +10,7 @@
 ### Installation
 1. Clone the repository:
    ```sh
-   git clone git@github.com:delboy96/pzagency-task.git
+   git clone git@github.com:delboy96/pzagencytask.git
    cd pzagencytask
 2. Run migration:
     ```sh
