@@ -7,7 +7,7 @@
 <?php if(isset($_SESSION['user'])) :?>
 <div class="editor mx-auto mt-10 w-full flex text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg ">
     <form action="../../public/php/updateComment.php" method="post" class="flex flex-col w-full">
-        <textarea id="comment" name="comment" class="description bg-gray-100 sec p-3 h-16 border border-gray-300 outline-none" spellcheck="false" placeholder="Leave your comment here"><?= $comment['comment']?></textarea>
+        <textarea id="comment" name="comment" class="description bg-gray-50 sec p-3 h-16 border border-gray-300 outline-none" spellcheck="false" placeholder="Leave your comment here"><?= $comment['comment']?></textarea>
         <input type="hidden" name="comment_id" value="<?= $comment['id']?>">
         <input type="hidden" name="post_id" value="<?= $comment['post_id']?>">
         <input type="hidden" name="_method" value="PATCH">

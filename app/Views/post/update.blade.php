@@ -5,12 +5,12 @@
 <span class="success-msg mt-10"><?= $_SESSION['message'] ?></span>
 <?php endif; ?>
 <?php if(isset($_SESSION['user'])) :?>
-<section id="createPostForm" class="py-10 border-b">
+<section id="createPostForm" class="py-4 md:py-10">
     <div class="heading text-center font-bold text-xl m-5 text-gray-800">Update Blog Post</div>
-    <div class="editor mx-auto w-10/12 flex text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg ">
+    <div class="editor mx-auto w-11/12 md:w-10/12 flex text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg ">
         <form action="../php/updatePost.php" method="post" class="flex flex-col w-full">
-            <input id="title" name="title" class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellcheck="false" placeholder="Title" type="text" value="<?= $blog['title']?>">
-            <textarea id="body" name="body" class="description bg-gray-100 sec p-3 h-28 border border-gray-300 outline-none" spellcheck="false" placeholder="Describe everything about this post here"><?= $blog['body']?></textarea>
+            <input id="title" name="title" class="title bg-gray-50 border border-gray-300 p-2 mb-4 outline-none" spellcheck="false" placeholder="Title" type="text" value="<?= $blog['title']?>">
+            <textarea id="body" name="body" class="description bg-gray-50 sec p-3 h-28 border border-gray-300 outline-none" spellcheck="false" placeholder="Describe everything about this post here"><?= $blog['body']?></textarea>
             <input type="hidden" name="post_id" value="<?= $blog['id'] ?>">
             <input type="hidden" name="_method" value="PATCH">
             <div class="icons flex text-gray-500 m-2">

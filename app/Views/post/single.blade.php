@@ -6,7 +6,7 @@
     <span class="success-msg mt-10"><?= $_SESSION['message'] ?></span>
     <?php endif; ?>
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <article class="max-w-2xl px-6 py-24 mx-auto space-y-12 dark:bg-gray-800 dark:text-gray-50">
+        <article class="max-w-2xl px-6 py-12 md:py-24 mx-auto space-y-12 dark:bg-gray-800 dark:text-gray-50">
             <div class="w-full mx-auto space-y-4 text-center">
                 <h1 class="text-4xl font-bold leadi md:text-5xl"><?= $blog['title']?></h1>
                 <p class="text-sm dark:text-gray-400">by
@@ -22,7 +22,7 @@
             <div class="pt-12 border-t dark:border-gray-700 space-y-6">
                 <?php foreach ($comments as $comm) : ?>
                 <div class="flex justify-between">
-                    <div class="flex space-y-4 md:space-y-0  md:flex-row items-center md:space-x-6">
+                    <div class="flex space-y-4 md:space-y-0  md:flex-row items-center space-x-6">
                         <img src="https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/charlie-chaplin-icon.png" alt="" class="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-gray-500 dark:border-gray-700">
                         <div class="flex flex-col">
                             <h4 class="text-lg font-semibold"><?= $comm['user_name']?></h4>
@@ -43,12 +43,12 @@
                 </div>
                 <?php endforeach; ?>
                 <?php if(empty($comments)) :?>
-                <span>No comments yet.</span>
+                <span class="italic text-gray-400">No comments yet.</span>
                 <?php endif; ?>
                 <?php if(isset($_SESSION['user'])) :?>
                 <div class="editor w-full flex text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg ">
                     <form action="../../public/php/createComment.php" method="post" class="flex flex-col w-full">
-                        <textarea id="comment" name="comment" class="description bg-gray-100 sec p-3 h-16 border border-gray-300 outline-none" spellcheck="false" placeholder="Leave your comment here"></textarea>
+                        <textarea id="comment" name="comment" class="description bg-gray-50 sec p-3 h-16 border border-gray-300 outline-none" spellcheck="false" placeholder="Leave your comment here"></textarea>
                         <input type="hidden" name="post_id" value="<?= $blog['id']?>">
                         <input type="hidden" name="user_id" value="<?= $_SESSION['user'] ?>">
                         <div class="buttons flex mt-3">

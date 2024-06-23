@@ -53,6 +53,7 @@ class AuthController
             if($user && password_verify($password, $user['password'])) {
                 session_start();
                 $_SESSION['user'] = $user['id'];
+                $_SESSION['user_name'] = $user['name'];
                 $data['success'] = 'Login successfull!';
             } else {
                 $data['error'] = 'Login error.';
