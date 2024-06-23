@@ -12,7 +12,8 @@
             </div>
         </div>
     </div>
-    <div class="flex w-full lg:w-1/2 justify-center items-center bg-gray-100 space-y-8">
+    <div class="flex flex-col w-full lg:w-1/2 justify-center items-center bg-gray-100 space-y-8">
+        <?php require_once '../app/Views/components/session-messsage.blade.php'?>
         <div class="w-full px-8 md:px-32 lg:px-24">
             <form action="../public/php/register.php" method="post" class="bg-white rounded-md shadow-2xl p-5">
                 <h1 class="text-gray-800 font-bold text-2xl mb-6">Hello, welcome!</h1>

@@ -26,7 +26,7 @@
 <?php endif; ?>
 <section class="py-12 ">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <h2 class="font-manrope text-4xl font-bold text-gray-900 text-center mb-16">Our latest blog</h2>
+        <h2 class="font-manrope text-4xl font-bold text-gray-900 text-center mb-16">Our blog</h2>
         <div class="grid justify-center gap-12 sm:gap-8 sm:gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:justify-between lg:gap-8">
             <?php foreach($blogs as $blog): ?>
             <div class="flex flex-col justify-between w-full max-lg:max-w-xl lg:w-full border border-gray-300 rounded-2xl shadow-lg hover:bg-gray-50">

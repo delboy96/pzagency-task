@@ -4,6 +4,7 @@
 <?php require_once '../app/Views/components/session-messsage.blade.php'?>
 
 <?php if(isset($_SESSION['user'])) :?>
+<div class="heading text-center font-bold text-xl m-5 text-gray-800">Update your comment</div>
 <div class="editor mx-auto mt-10 w-full flex text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg ">
     <form action="../../public/php/updateComment.php" method="post" class="flex flex-col w-full">
         <textarea id="comment" name="comment" class="description bg-gray-50 sec p-3 h-16 border border-gray-300 outline-none" spellcheck="false" placeholder="Leave your comment here"><?= $comment['comment']?></textarea>
