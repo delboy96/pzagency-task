@@ -17,5 +17,5 @@
     </form>
 </div>
 <?php endif;?>
-</body>
-</html>
+<?php require_once '../app/Views/components/footer.blade.php'?>
+

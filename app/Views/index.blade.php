@@ -55,5 +55,4 @@
         </div>
     </div>
 </section>
-</body>
-</html>
+<?php require_once '../app/Views/components/footer.blade.php'?>
