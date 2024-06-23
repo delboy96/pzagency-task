@@ -26,7 +26,7 @@
    const BASE_URL = 'http://localhost/pza/pzagencytask/public/';  
    const ASSETS_URL = 'http://localhost/pza/pzagencytask/assets/';  
    _public/.htaccess:_  
-   RewriteBase pza/pzagencytask/public/  
+   RewriteBase /pza/pzagencytask/public/  
    _routes/web.php:_  
    $basePath = 'pza/pzagencytask/public';    
    In lack of time, I couldn't make this universal and dynamic. Hope you wouldn't mind! 
