@@ -2,8 +2,11 @@
 
 namespace Controllers;
 
+use Validators\Validator;
+
 require_once __DIR__ . '/../Models/Post.php';
 require_once __DIR__ . '/../Models/Comment.php';
+require_once __DIR__ . '/../Validators/Validator.php';
 
 class PostController
 {
@@ -33,11 +36,11 @@ class PostController
     {
         $data = [];
 
-        if (strlen($title) < 3 || strlen($title) > 40) {
+        if (!Validator::validateName($title)) {
             $data['error'] = 'Title must have between 3 and 30 characters.';
             return $data;
         }
-        if (strlen($body) < 4 ) {
+        if (!Validator::validateBody($body)) {
             $data['error'] = 'Body must have at least 4';
             return $data;
         }
@@ -63,11 +66,11 @@ class PostController
     {
         $data = [];
 
-        if (strlen($title) < 3 || strlen($title) > 40) {
+        if (!Validator::validateName($title)) {
             $data['error'] = 'Title must have between 3 and 30 characters.';
             return $data;
         }
-        if (strlen($body) < 4 ) {
+        if (!Validator::validateBody($body)) {
             $data['error'] = 'Body must have at least 4';
             return $data;
         }

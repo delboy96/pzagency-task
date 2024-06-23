@@ -10,3 +10,4 @@ if (session_status() === PHP_SESSION_NONE) {
 //require_once '../vendor/autoload.php';
 require_once '../config/conn.php';
 require_once '../routes/web.php';
+require_once '../vendor/autoload.php';

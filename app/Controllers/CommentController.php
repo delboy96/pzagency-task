@@ -2,7 +2,10 @@
 
 namespace Controllers;
 
+use Validators\Validator;
+
 require_once __DIR__ . '/../Models/Comment.php';
+require_once __DIR__ . '/../Validators/Validator.php';
 
 class CommentController
 {
@@ -16,8 +19,8 @@ class CommentController
     {
         $data = [];
 
-        if (strlen($comment) < 4 ) {
-            $data['error'] = 'Body must have at least 4';
+        if (!Validator::validateBody($comment)) {
+            $data['error'] = 'Comment must have at least 4 characters.';
             return $data;
         }
 
@@ -42,8 +45,8 @@ class CommentController
     {
         $data = [];
 
-        if (strlen($comment) < 4 ) {
-            $data['error'] = 'Body must have at least 4';
+        if (!Validator::validateBody($comment)) {
+            $data['error'] = 'Comment must have at least 4 characters.';
             return $data;
         }
 

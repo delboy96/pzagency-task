@@ -3,8 +3,10 @@
 namespace Controllers;
 
 use Models\User;
+use Validators\Validator;
 
 require_once __DIR__ . '/../Models/User.php';
+require_once __DIR__ . '/../Validators/Validator.php';
 class AuthController
 {
     private $userModel;
@@ -28,15 +30,15 @@ class AuthController
     {
         $data = [];
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (!Validator::validateEmail($email)) {
             $data['error'] = 'Please enter a valid email address.';
             return $data;
         }
-        if (strlen($name) < 3 || strlen($name) > 30) {
+        if (!Validator::validateName($name)) {
             $data['error'] = 'Name must have between 3 and 30 characters.';
             return $data;
         }
-        if (strlen($password) < 6 || strlen($password) > 30) {
+        if (!Validator::validatePassword($password)) {
             $data['error'] = 'Password must have between 3 and 30 characters.';
             return $data;
         }
@@ -60,11 +62,12 @@ class AuthController
     {
         $data = [];
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (!Validator::validateEmail($email)) {
             $data['error'] = 'Please enter a valid email address.';
             return $data;
         }
-        if (strlen($password) < 6 || strlen($password) > 30) {
+
+        if (!Validator::validatePassword($password)) {
             $data['error'] = 'Password must have between 3 and 30 characters.';
             return $data;
         }
