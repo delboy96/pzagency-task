@@ -56,7 +56,7 @@ class AuthController
                 $_SESSION['user_name'] = $user['name'];
                 $data['success'] = 'Login successfull!';
             } else {
-                $data['error'] = 'Login error.';
+                $data['error'] = 'Wrong credentials, try again.';
             }
         } catch (\Exception $e){
             $data['error'] = $e->getMessage();
